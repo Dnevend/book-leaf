@@ -23,7 +23,7 @@ const Header = () => {
     <div className="flex items-center justify-between py-5 md:block">
       <a href="/" className="flex items-center">
         <Leaf size={48} color="#96c24e" />
-        <h1 className="text-2xl font-bold">BookLeaf</h1>
+        <h1 className="text-2xl font-bold px-2">書叶 · BookLeaf</h1>
       </a>
       <div className="md:hidden">
         <button
