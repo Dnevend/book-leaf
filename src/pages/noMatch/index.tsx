@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router";
+
 const NoMatch = () => {
+  const navigate = useNavigate();
+
   return (
     <main>
       <div className="max-w-screen-xl mx-auto px-4 flex items-center justify-start h-screen md:px-8">
@@ -12,6 +16,7 @@ const NoMatch = () => {
           </p>
           <a
             href="javascript:void(0)"
+            onClick={() => navigate(-1)}
             className="text-indigo-600 duration-150 hover:text-indigo-400 font-medium inline-flex items-center gap-x-1"
           >
             Go back
