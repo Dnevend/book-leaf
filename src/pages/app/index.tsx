@@ -87,8 +87,7 @@ function App() {
   };
 
   return (
-    <div className="relative max-w-screen-xl flex-col space-y-6 p-6 mx-auto">
-      <h1 className="text-center text-xl font-bold">BookLeaf</h1>
+    <div className="max-w-screen-xl flex-col space-y-6 p-6 mx-auto">
       <div className="flex w-full max-w-sm items-center space-x-2 mx-auto">
         <Input
           onChange={(e) => setSearchContent(e.target.value)}

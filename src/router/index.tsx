@@ -1,3 +1,4 @@
+import Layout from "@/layout";
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -77,9 +78,12 @@ export const Router = () => {
     <Suspense fallback={<Loading />}>
       <Routes>
         <Route index element={<Landing />} />
-        <Route path="/app" element={<AppMain />} />
-        <Route path="/share" element={<AppShare />} />
-        <Route path="*" element={<NoMatch />} />
+
+        <Route path="/" element={<Layout />}>
+          <Route path="/app" element={<AppMain />} />
+          <Route path="/share" element={<AppShare />} />
+          <Route path="*" element={<NoMatch />} />
+        </Route>
       </Routes>
     </Suspense>
   );
