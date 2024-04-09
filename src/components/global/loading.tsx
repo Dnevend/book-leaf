@@ -1,6 +1,6 @@
 import { Leaf } from "lucide-react";
 
-const PageLoading = () => (
+export const Loading = () => (
   <div className="min-h-screen flex flex-col items-center justify-center">
     <Leaf size={48} color="#96c24e" />
     <svg
@@ -66,4 +66,4 @@ const PageLoading = () => (
   </div>
 );
 
-export default PageLoading;
+export default Loading;

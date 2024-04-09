@@ -1,4 +1,4 @@
-import PageLoading from "@/components/pageLoading";
+import { Loading } from "@/components/global";
 import { useHandleSignInCallback } from "@logto/react";
 import { useNavigate } from "react-router-dom";
 
@@ -12,7 +12,7 @@ const Callback = () => {
 
   // When it's working in progress
   if (isLoading) {
-    return <PageLoading />;
+    return <Loading />;
   }
 
   return null;

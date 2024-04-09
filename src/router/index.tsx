@@ -1,7 +1,7 @@
 import Layout from "@/layout";
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import PageLoading from "@/components/pageLoading";
+import { Loading } from "@/components/global";
 
 const Landing = lazy(() => import("@/pages/landing"));
 const NoMatch = lazy(() => import("@/pages/noMatch"));
@@ -12,7 +12,7 @@ const AppMine = lazy(() => import("@/pages/mine"));
 
 export const Router = () => {
   return (
-    <Suspense fallback={<PageLoading />}>
+    <Suspense fallback={<Loading />}>
       <Routes>
         <Route index element={<Landing />} />
 

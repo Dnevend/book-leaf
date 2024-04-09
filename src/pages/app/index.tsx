@@ -190,9 +190,7 @@ function App() {
       <div className="sticky bottom-6 mx-auto w-fit shadow-md">
         <Menubar className="p-2">
           <MenubarMenu>
-            <MenubarTrigger>
-              <button>Share</button>
-            </MenubarTrigger>
+            <MenubarTrigger>Share</MenubarTrigger>
           </MenubarMenu>
 
           <Separator orientation="vertical" />
