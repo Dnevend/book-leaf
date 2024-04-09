@@ -190,7 +190,11 @@ function App() {
       <div className="sticky bottom-6 mx-auto w-fit shadow-md">
         <Menubar className="p-2">
           <MenubarMenu>
-            <MenubarTrigger>Share</MenubarTrigger>
+            <MenubarTrigger asChild>
+              <button className="inline-flex h-6 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 mx-2 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+                Share
+              </button>
+            </MenubarTrigger>
           </MenubarMenu>
 
           <Separator orientation="vertical" />
@@ -234,10 +238,10 @@ function App() {
             </MenubarContent>
           </MenubarMenu>
 
-          <Separator orientation="vertical" />
+          <Separator orientation="vertical" className="hidden sm:block" />
 
           <MenubarMenu>
-            <MenubarTrigger>View</MenubarTrigger>
+            <MenubarTrigger className="hidden sm:block">View</MenubarTrigger>
             <MenubarContent>
               <MenubarCheckboxItem>
                 Always Show Bookmarks Bar
@@ -259,7 +263,9 @@ function App() {
             </MenubarContent>
           </MenubarMenu>
           <MenubarMenu>
-            <MenubarTrigger>Profiles</MenubarTrigger>
+            <MenubarTrigger className="hidden sm:block">
+              Profiles
+            </MenubarTrigger>
             <MenubarContent>
               <MenubarRadioGroup value="benoit">
                 <MenubarRadioItem value="andy">Andy</MenubarRadioItem>

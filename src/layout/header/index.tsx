@@ -2,6 +2,7 @@ import { Leaf } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLogto } from "@logto/react";
 import { useNavigate, Link } from "react-router-dom";
+import { Button } from "@/components/ui";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -26,8 +27,8 @@ const Header = () => {
   const Brand = () => (
     <div className="flex items-center justify-between py-5 md:block">
       <Link to="/" className="flex items-center">
-        <Leaf size={48} color="#96c24e" />
-        {/* <h1 className="text-2xl font-bold px-2">書叶 · BookLeaf</h1> */}
+        <Leaf size={36} color="#96c24e" />
+        <h1 className="text-xl font-bold px-2">書叶 · BookLeaf</h1>
       </Link>
       <div className="md:hidden">
         <button
@@ -99,7 +100,7 @@ const Header = () => {
               })}
             </ul>
             <div className="items-center justify-end mt-6 space-y-6 md:flex md:mt-0">
-              <button
+              <Button
                 onClick={() => {
                   if (isAuthenticated) {
                     navigate("/mine");
@@ -107,7 +108,7 @@ const Header = () => {
                     signIn(import.meta.env.VITE_LOGTO_SIGNIN_REDIRECT_URL);
                   }
                 }}
-                className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex"
+                className="w-full flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex"
               >
                 {isAuthenticated ? (
                   "authenticated"
@@ -128,7 +129,7 @@ const Header = () => {
                     </svg>
                   </>
                 )}
-              </button>
+              </Button>
             </div>
           </div>
         </div>
