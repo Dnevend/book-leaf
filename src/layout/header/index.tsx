@@ -1,7 +1,7 @@
 import { Leaf } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLogto } from "@logto/react";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -25,10 +25,10 @@ const Header = () => {
 
   const Brand = () => (
     <div className="flex items-center justify-between py-5 md:block">
-      <a href="/" className="flex items-center">
+      <Link to="/" className="flex items-center">
         <Leaf size={48} color="#96c24e" />
         {/* <h1 className="text-2xl font-bold px-2">書叶 · BookLeaf</h1> */}
-      </a>
+      </Link>
       <div className="md:hidden">
         <button
           className="menu-btn text-gray-500 hover:text-gray-800"
