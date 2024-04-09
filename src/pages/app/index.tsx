@@ -33,8 +33,9 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
+  Separator,
 } from "@/components/ui";
-import { MoreHorizontal, BookPlus, Link as LucideLink } from "lucide-react";
+import { MoreHorizontal } from "lucide-react";
 
 const baseUrl = "https://www.googleapis.com/books";
 
@@ -190,34 +191,25 @@ function App() {
         <Menubar className="p-2">
           <MenubarMenu>
             <MenubarTrigger>
-              <BookPlus className="h-4 w-4" />
+              <button>Share</button>
             </MenubarTrigger>
-            <MenubarContent>
-              <MenubarItem>
-                New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-              </MenubarItem>
-              <MenubarItem>
-                New Window <MenubarShortcut>⌘N</MenubarShortcut>
-              </MenubarItem>
-              <MenubarItem disabled>New Incognito Window</MenubarItem>
-              <MenubarSeparator />
-              <MenubarSub>
-                <MenubarSubTrigger>Share</MenubarSubTrigger>
-                <MenubarSubContent>
-                  <MenubarItem>Email link</MenubarItem>
-                  <MenubarItem>Messages</MenubarItem>
-                  <MenubarItem>Notes</MenubarItem>
-                </MenubarSubContent>
-              </MenubarSub>
-              <MenubarSeparator />
-              <MenubarItem>
-                Print... <MenubarShortcut>⌘P</MenubarShortcut>
-              </MenubarItem>
-            </MenubarContent>
+          </MenubarMenu>
+
+          <Separator orientation="vertical" />
+
+          <MenubarMenu>
+            <MenubarTrigger>
+              <div className="shadow-sm">📚</div>
+            </MenubarTrigger>
           </MenubarMenu>
           <MenubarMenu>
             <MenubarTrigger>
-              <LucideLink className="h-4 w-4" />
+              <div className="shadow-sm">🌁</div>
+            </MenubarTrigger>
+          </MenubarMenu>
+          <MenubarMenu>
+            <MenubarTrigger>
+              <div className="shadow-sm">🖇️</div>
             </MenubarTrigger>
             <MenubarContent>
               <MenubarItem>
@@ -243,6 +235,9 @@ function App() {
               <MenubarItem>Paste</MenubarItem>
             </MenubarContent>
           </MenubarMenu>
+
+          <Separator orientation="vertical" />
+
           <MenubarMenu>
             <MenubarTrigger>View</MenubarTrigger>
             <MenubarContent>

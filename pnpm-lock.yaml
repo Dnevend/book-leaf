@@ -10,6 +10,9 @@ dependencies:
   '@radix-ui/react-menubar':
     specifier: ^1.0.4
     version: registry.npmmirror.com/@radix-ui/react-menubar@1.0.4(@types/react-dom@18.2.23)(@types/react@18.2.74)(react-dom@18.2.0)(react@18.2.0)
+  '@radix-ui/react-separator':
+    specifier: ^1.0.3
+    version: registry.npmmirror.com/@radix-ui/react-separator@1.0.3(@types/react-dom@18.2.23)(@types/react@18.2.74)(react-dom@18.2.0)(react@18.2.0)
   '@radix-ui/react-slot':
     specifier: ^1.0.2
     version: registry.npmmirror.com/@radix-ui/react-slot@1.0.2(@types/react@18.2.74)(react@18.2.0)
@@ -1307,6 +1310,30 @@ packages:
       '@radix-ui/react-primitive': registry.npmmirror.com/@radix-ui/react-primitive@1.0.3(@types/react-dom@18.2.23)(@types/react@18.2.74)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-use-callback-ref': registry.npmmirror.com/@radix-ui/react-use-callback-ref@1.0.1(@types/react@18.2.74)(react@18.2.0)
       '@radix-ui/react-use-controllable-state': registry.npmmirror.com/@radix-ui/react-use-controllable-state@1.0.1(@types/react@18.2.74)(react@18.2.0)
+      '@types/react': registry.npmmirror.com/@types/react@18.2.74
+      '@types/react-dom': registry.npmmirror.com/@types/react-dom@18.2.23
+      react: registry.npmmirror.com/react@18.2.0
+      react-dom: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
+    dev: false
+
+  registry.npmmirror.com/@radix-ui/react-separator@1.0.3(@types/react-dom@18.2.23)(@types/react@18.2.74)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-itYmTy/kokS21aiV5+Z56MZB54KrhPgn6eHDKkFeOLR34HMN2s8PaN47qZZAGnvupcjxHaFZnW4pQEh0BvvVuw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@radix-ui/react-separator/-/react-separator-1.0.3.tgz}
+    id: registry.npmmirror.com/@radix-ui/react-separator/1.0.3
+    name: '@radix-ui/react-separator'
+    version: 1.0.3
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime@7.24.1
+      '@radix-ui/react-primitive': registry.npmmirror.com/@radix-ui/react-primitive@1.0.3(@types/react-dom@18.2.23)(@types/react@18.2.74)(react-dom@18.2.0)(react@18.2.0)
       '@types/react': registry.npmmirror.com/@types/react@18.2.74
       '@types/react-dom': registry.npmmirror.com/@types/react-dom@18.2.23
       react: registry.npmmirror.com/react@18.2.0
