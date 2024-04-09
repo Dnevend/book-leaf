@@ -36,8 +36,7 @@ const Mine = () => {
   }, [isAuthenticated]);
 
   return (
-    <div>
-      <h1>{userInfo?.username ?? "-"}</h1>
+    <div className="max-w-screen-xl flex-col space-y-6 p-6 mx-auto">
       <ProfileForm userInfo={userInfo} />
       <button
         onClick={() => signOut(import.meta.env.VITE_LOGTO_SIGNOUT_REDIRECT_URL)}
