@@ -1,4 +1,4 @@
-import { Leaf } from "lucide-react";
+import { CircleUser, Leaf } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLogto } from "@logto/react";
 import { useNavigate, Link } from "react-router-dom";
@@ -111,7 +111,10 @@ const Header = () => {
                 className="w-full flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex"
               >
                 {isAuthenticated ? (
-                  "authenticated"
+                  <>
+                    Me
+                    <CircleUser />
+                  </>
                 ) : (
                   <>
                     Sign in

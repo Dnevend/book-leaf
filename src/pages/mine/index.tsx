@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { supabase } from "@/lib/supabaseClient";
 import { Tables } from "@/types/supabase";
+import { ProfileForm } from "./components/profileForm";
 
 const Mine = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const Mine = () => {
 
         const { data: userInfo } = await supabase
           .from("user")
-          .select("id, username, avatar, bio, email")
+          .select("id, logto_sub, username, avatar, bio, email")
           .eq("logto_sub", claims?.sub)
           .single<Tables<"user">>();
 
@@ -37,6 +38,7 @@ const Mine = () => {
   return (
     <div>
       <h1>{userInfo?.username ?? "-"}</h1>
+      <ProfileForm userInfo={userInfo} />
       <button
         onClick={() => signOut(import.meta.env.VITE_LOGTO_SIGNOUT_REDIRECT_URL)}
         className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex"
