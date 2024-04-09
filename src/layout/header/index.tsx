@@ -1,4 +1,4 @@
-import { CircleUser, Leaf } from "lucide-react";
+import { CircleUser, Leaf, LoaderCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLogto } from "@logto/react";
 import { useNavigate, Link } from "react-router-dom";
@@ -7,7 +7,7 @@ import { Button } from "@/components/ui";
 const Header = () => {
   const navigate = useNavigate();
   const [state, setState] = useState(false);
-  const { signIn, isAuthenticated } = useLogto();
+  const { signIn, isAuthenticated, isLoading } = useLogto();
 
   // Replace javascript:void(0) paths with your paths
   const navigation: { title: string; path: string }[] = [
@@ -118,18 +118,22 @@ const Header = () => {
                 ) : (
                   <>
                     Sign in
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      className="w-5 h-5"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                    {isLoading ? (
+                      <LoaderCircle className="animate-spin" />
+                    ) : (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        className="w-5 h-5"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    )}
                   </>
                 )}
               </Button>

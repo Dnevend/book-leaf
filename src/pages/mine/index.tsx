@@ -4,10 +4,12 @@ import { useNavigate } from "react-router";
 import { supabase } from "@/lib/supabaseClient";
 import { Tables } from "@/types/supabase";
 import { ProfileForm } from "./components/profileForm";
+import { Button } from "@/components/ui";
+import { LoaderCircle } from "lucide-react";
 
 const Mine = () => {
   const navigate = useNavigate();
-  const { isAuthenticated, getIdTokenClaims, signOut } = useLogto();
+  const { isAuthenticated, getIdTokenClaims, signOut, isLoading } = useLogto();
 
   const [userInfo, setUserInfo] = useState<Tables<"user"> | null>(null);
 
@@ -38,12 +40,14 @@ const Mine = () => {
   return (
     <div className="max-w-screen-xl flex-col space-y-6 p-6 mx-auto">
       <ProfileForm userInfo={userInfo} />
-      <button
+      <Button
+        disabled={isLoading}
         onClick={() => signOut(import.meta.env.VITE_LOGTO_SIGNOUT_REDIRECT_URL)}
         className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex"
       >
         Sign Out
-      </button>
+        {isLoading && <LoaderCircle className="animate-spin" />}
+      </Button>
     </div>
   );
 };
