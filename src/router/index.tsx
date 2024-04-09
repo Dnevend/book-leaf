@@ -1,87 +1,27 @@
 import Layout from "@/layout";
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
+import PageLoading from "@/components/pageLoading";
 
 const Landing = lazy(() => import("@/pages/landing"));
 const NoMatch = lazy(() => import("@/pages/noMatch"));
+const Callback = lazy(() => import("@/pages/callback"));
 const AppMain = lazy(() => import("@/pages/app"));
 const AppShare = lazy(() => import("@/pages/share"));
-
-const Loading = () => (
-  <div className="min-h-screen flex flex-col items-center justify-center">
-    <h1>BookLeaf</h1>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 200 200"
-      className="w-8 h-8"
-    >
-      <circle
-        fill="#000000"
-        stroke="#000000"
-        stroke-width="15"
-        r="15"
-        cx="40"
-        cy="100"
-      >
-        <animate
-          attributeName="opacity"
-          calcMode="spline"
-          dur="2"
-          values="1;0;1;"
-          keySplines=".5 0 .5 1;.5 0 .5 1"
-          repeatCount="indefinite"
-          begin="-.4"
-        ></animate>
-      </circle>
-      <circle
-        fill="#000000"
-        stroke="#000000"
-        stroke-width="15"
-        r="15"
-        cx="100"
-        cy="100"
-      >
-        <animate
-          attributeName="opacity"
-          calcMode="spline"
-          dur="2"
-          values="1;0;1;"
-          keySplines=".5 0 .5 1;.5 0 .5 1"
-          repeatCount="indefinite"
-          begin="-.2"
-        ></animate>
-      </circle>
-      <circle
-        fill="#000000"
-        stroke="#000000"
-        stroke-width="15"
-        r="15"
-        cx="160"
-        cy="100"
-      >
-        <animate
-          attributeName="opacity"
-          calcMode="spline"
-          dur="2"
-          values="1;0;1;"
-          keySplines=".5 0 .5 1;.5 0 .5 1"
-          repeatCount="indefinite"
-          begin="0"
-        ></animate>
-      </circle>
-    </svg>
-  </div>
-);
+const AppMine = lazy(() => import("@/pages/mine"));
 
 export const Router = () => {
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={<PageLoading />}>
       <Routes>
         <Route index element={<Landing />} />
+
+        <Route path="/callback" element={<Callback />} />
 
         <Route path="/" element={<Layout />}>
           <Route path="/app" element={<AppMain />} />
           <Route path="/share" element={<AppShare />} />
+          <Route path="/mine" element={<AppMine />} />
           <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>

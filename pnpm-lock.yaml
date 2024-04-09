@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  '@logto/react':
+    specifier: ^3.0.4
+    version: registry.npmmirror.com/@logto/react@3.0.4(react@18.2.0)
   '@radix-ui/react-dropdown-menu':
     specifier: ^2.0.6
     version: registry.npmmirror.com/@radix-ui/react-dropdown-menu@2.0.6(@types/react-dom@18.2.23)(@types/react@18.2.74)(react-dom@18.2.0)(react@18.2.0)
@@ -794,6 +797,49 @@ packages:
       '@jridgewell/resolve-uri': registry.npmmirror.com/@jridgewell/resolve-uri@3.1.2
       '@jridgewell/sourcemap-codec': registry.npmmirror.com/@jridgewell/sourcemap-codec@1.4.15
 
+  registry.npmmirror.com/@logto/browser@2.2.6:
+    resolution: {integrity: sha512-Lf3JukPGEurKiwL5ytKrMHJHXdbKdnE6ydKWk9Cda15s4CbzyrZXJUBgon6a3+s+xfXKYz5vNJP8zi72PV1piw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@logto/browser/-/browser-2.2.6.tgz}
+    name: '@logto/browser'
+    version: 2.2.6
+    dependencies:
+      '@logto/client': registry.npmmirror.com/@logto/client@2.6.2
+      '@silverhand/essentials': registry.npmmirror.com/@silverhand/essentials@2.9.0
+      js-base64: registry.npmmirror.com/js-base64@3.7.7
+    dev: false
+
+  registry.npmmirror.com/@logto/client@2.6.2:
+    resolution: {integrity: sha512-x0uZ5Ztdoqa7OlM0tH9UY3v475Ck+y7t1JcpPgoKDm22oAD/+NpaLeQGFqGmrgj77iRz+hWwsOeoHAvd858Wmg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@logto/client/-/client-2.6.2.tgz}
+    name: '@logto/client'
+    version: 2.6.2
+    dependencies:
+      '@logto/js': registry.npmmirror.com/@logto/js@4.1.1
+      '@silverhand/essentials': registry.npmmirror.com/@silverhand/essentials@2.9.0
+      camelcase-keys: registry.npmmirror.com/camelcase-keys@7.0.2
+      jose: registry.npmmirror.com/jose@5.2.4
+    dev: false
+
+  registry.npmmirror.com/@logto/js@4.1.1:
+    resolution: {integrity: sha512-+RgthBvDw30UojirtAjZeHNfOwDQVURmpjcIBYTIf6afx5F5jJq8b1D/eaFbrCFrmXmatkT2iN7X8kYHui86WQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@logto/js/-/js-4.1.1.tgz}
+    name: '@logto/js'
+    version: 4.1.1
+    dependencies:
+      '@silverhand/essentials': registry.npmmirror.com/@silverhand/essentials@2.9.0
+      camelcase-keys: registry.npmmirror.com/camelcase-keys@7.0.2
+    dev: false
+
+  registry.npmmirror.com/@logto/react@3.0.4(react@18.2.0):
+    resolution: {integrity: sha512-ld24MFZZfed7O3crwq6LLWxSKyViKLi0GmaFP9D895cp1fpbyf9ByRDTrkfjRplti/UIWjtsyXF46MxYz/TmLQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@logto/react/-/react-3.0.4.tgz}
+    id: registry.npmmirror.com/@logto/react/3.0.4
+    name: '@logto/react'
+    version: 3.0.4
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      '@logto/browser': registry.npmmirror.com/@logto/browser@2.2.6
+      '@silverhand/essentials': registry.npmmirror.com/@silverhand/essentials@2.9.0
+      react: registry.npmmirror.com/react@18.2.0
+    dev: false
+
   registry.npmmirror.com/@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz}
     name: '@nodelib/fs.scandir'
@@ -1563,6 +1609,13 @@ packages:
     dev: true
     optional: true
 
+  registry.npmmirror.com/@silverhand/essentials@2.9.0:
+    resolution: {integrity: sha512-n9mSO/gsLj0GRFXBRNhaQLRK6qbn6pBnKjMQdFwweKgT12ODBXpgkpXohpOBqSofnoaCQWqiDAT6xpCy/5dMIg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@silverhand/essentials/-/essentials-2.9.0.tgz}
+    name: '@silverhand/essentials'
+    version: 2.9.0
+    engines: {node: ^18.12.0 || ^20.9.0, pnpm: ^8.0.0}
+    dev: false
+
   registry.npmmirror.com/@types/babel__core@7.20.5:
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/babel__core/-/babel__core-7.20.5.tgz}
     name: '@types/babel__core'
@@ -2009,6 +2062,25 @@ packages:
     name: camelcase-css
     version: 2.0.1
     engines: {node: '>= 6'}
+
+  registry.npmmirror.com/camelcase-keys@7.0.2:
+    resolution: {integrity: sha512-Rjs1H+A9R+Ig+4E/9oyB66UC5Mj9Xq3N//vcLf2WzgdTi/3gUu3Z9KoqmlrEG4VuuLK8wJHofxzdQXz/knhiYg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/camelcase-keys/-/camelcase-keys-7.0.2.tgz}
+    name: camelcase-keys
+    version: 7.0.2
+    engines: {node: '>=12'}
+    dependencies:
+      camelcase: registry.npmmirror.com/camelcase@6.3.0
+      map-obj: registry.npmmirror.com/map-obj@4.3.0
+      quick-lru: registry.npmmirror.com/quick-lru@5.1.1
+      type-fest: registry.npmmirror.com/type-fest@1.4.0
+    dev: false
+
+  registry.npmmirror.com/camelcase@6.3.0:
+    resolution: {integrity: sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/camelcase/-/camelcase-6.3.0.tgz}
+    name: camelcase
+    version: 6.3.0
+    engines: {node: '>=10'}
+    dev: false
 
   registry.npmmirror.com/caniuse-lite@1.0.30001605:
     resolution: {integrity: sha512-nXwGlFWo34uliI9z3n6Qc0wZaf7zaZWA1CPZ169La5mV3I/gem7bst0vr5XQH5TJXZIMfDeZyOrZnSlVzKxxHQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/caniuse-lite/-/caniuse-lite-1.0.30001605.tgz}
@@ -2749,6 +2821,18 @@ packages:
     version: 1.21.0
     hasBin: true
 
+  registry.npmmirror.com/jose@5.2.4:
+    resolution: {integrity: sha512-6ScbIk2WWCeXkmzF6bRPmEuaqy1m8SbsRFMa/FLrSCkGIhj8OLVG/IH+XHVmNMx/KUo8cVWEE6oKR4dJ+S0Rkg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/jose/-/jose-5.2.4.tgz}
+    name: jose
+    version: 5.2.4
+    dev: false
+
+  registry.npmmirror.com/js-base64@3.7.7:
+    resolution: {integrity: sha512-7rCnleh0z2CkXhH67J8K1Ytz0b2Y+yxTPL+/KOJoa20hfnVQ/3/T6W/KflYI4bRHRagNeXeU2bkNGI3v1oS/lw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/js-base64/-/js-base64-3.7.7.tgz}
+    name: js-base64
+    version: 3.7.7
+    dev: false
+
   registry.npmmirror.com/js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/js-tokens/-/js-tokens-4.0.0.tgz}
     name: js-tokens
@@ -2888,6 +2972,13 @@ packages:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
       react: registry.npmmirror.com/react@18.2.0
+    dev: false
+
+  registry.npmmirror.com/map-obj@4.3.0:
+    resolution: {integrity: sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/map-obj/-/map-obj-4.3.0.tgz}
+    name: map-obj
+    version: 4.3.0
+    engines: {node: '>=8'}
     dev: false
 
   registry.npmmirror.com/merge2@1.4.1:
@@ -3207,6 +3298,13 @@ packages:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/queue-microtask/-/queue-microtask-1.2.3.tgz}
     name: queue-microtask
     version: 1.2.3
+
+  registry.npmmirror.com/quick-lru@5.1.1:
+    resolution: {integrity: sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/quick-lru/-/quick-lru-5.1.1.tgz}
+    name: quick-lru
+    version: 5.1.1
+    engines: {node: '>=10'}
+    dev: false
 
   registry.npmmirror.com/react-dom@18.2.0(react@18.2.0):
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-dom/-/react-dom-18.2.0.tgz}
@@ -3679,6 +3777,13 @@ packages:
     version: 0.20.2
     engines: {node: '>=10'}
     dev: true
+
+  registry.npmmirror.com/type-fest@1.4.0:
+    resolution: {integrity: sha512-yGSza74xk0UG8k+pLh5oeoYirvIiWo5t0/o3zHHAO2tRDiZcxWP7fywNlXhqb6/r6sWvwi+RsyQMWhVLe4BVuA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/type-fest/-/type-fest-1.4.0.tgz}
+    name: type-fest
+    version: 1.4.0
+    engines: {node: '>=10'}
+    dev: false
 
   registry.npmmirror.com/typescript@5.4.3:
     resolution: {integrity: sha512-KrPd3PKaCLr78MalgiwJnA25Nm8HAmdwN3mYUYZgG/wizIo9EainNVQI9/yDavtVFRN2h3k8uf3GLHuhDMgEHg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/typescript/-/typescript-5.4.3.tgz}
