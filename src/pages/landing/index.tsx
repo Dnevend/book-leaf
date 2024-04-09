@@ -1,5 +1,6 @@
 import Header from "@/layout/header";
 import { Link } from "react-router-dom";
+import { HeroScrollDemo } from "./components/heroScroll";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       ></div>
       <div className="relative">
         <Header />
+
         <section>
           <div className="max-w-screen-xl mx-auto px-4 py-28 gap-12 text-gray-600 overflow-hidden md:px-8 md:flex">
             <div className="flex-none space-y-5 max-w-xl">
@@ -94,6 +96,8 @@ const Home = () => {
             </div>
           </div>
         </section>
+
+        <HeroScrollDemo />
       </div>
     </div>
   );
