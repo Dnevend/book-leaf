@@ -84,8 +84,8 @@ export const useSupabaseAuth = () => {
   const navigate = useNavigate();
   const ctx = useContext(SupabaseAuthContext);
 
-  const signOut = () => {
-    supabase.auth.signOut();
+  const signOut = async () => {
+    await supabase.auth.signOut();
     ctx?.dispatch({ type: "signOut" });
     navigate("/");
   };

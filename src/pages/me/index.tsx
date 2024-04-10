@@ -3,15 +3,16 @@ import { ProfileForm } from "./components/profileForm";
 import { Button } from "@/components/ui";
 import { LogOut } from "lucide-react";
 import { useSupabaseAuth } from "@/provider/supabaseAuth";
+import { useEffect } from "react";
 
 const Mine = () => {
   const navigate = useNavigate();
 
   const { isAuth, userInfo, signOut } = useSupabaseAuth();
 
-  if (!isAuth) {
-    navigate("/");
-  }
+  useEffect(() => {
+    if (!isAuth) navigate("/auth");
+  }, [isAuth, navigate]);
 
   return (
     <div className="max-w-screen-xl flex-col space-y-6 p-6 mx-auto">
