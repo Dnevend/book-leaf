@@ -6,6 +6,7 @@ import { Loading } from "@/components/global";
 const Landing = lazy(() => import("@/pages/landing"));
 const NoMatch = lazy(() => import("@/pages/noMatch"));
 const Callback = lazy(() => import("@/pages/callback"));
+const AppAuth = lazy(() => import("@/pages/auth"));
 const AppMain = lazy(() => import("@/pages/app"));
 const AppShare = lazy(() => import("@/pages/share"));
 const AppMine = lazy(() => import("@/pages/mine"));
@@ -16,6 +17,7 @@ export const Router = () => {
       <Routes>
         <Route index element={<Landing />} />
 
+        <Route path="/auth" element={<AppAuth />} />
         <Route path="/callback" element={<Callback />} />
 
         <Route path="/" element={<Layout />}>

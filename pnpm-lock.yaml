@@ -22,6 +22,12 @@ dependencies:
   '@radix-ui/react-slot':
     specifier: ^1.0.2
     version: registry.npmmirror.com/@radix-ui/react-slot@1.0.2(@types/react@18.2.74)(react@18.2.0)
+  '@supabase/auth-ui-react':
+    specifier: ^0.4.7
+    version: registry.npmmirror.com/@supabase/auth-ui-react@0.4.7(@supabase/supabase-js@2.42.0)
+  '@supabase/auth-ui-shared':
+    specifier: ^0.1.8
+    version: registry.npmmirror.com/@supabase/auth-ui-shared@0.1.8(@supabase/supabase-js@2.42.0)
   '@supabase/supabase-js':
     specifier: ^2.42.0
     version: registry.npmmirror.com/@supabase/supabase-js@2.42.0
@@ -1699,12 +1705,45 @@ packages:
     engines: {node: ^18.12.0 || ^20.9.0, pnpm: ^8.0.0}
     dev: false
 
+  registry.npmmirror.com/@stitches/core@1.2.8:
+    resolution: {integrity: sha512-Gfkvwk9o9kE9r9XNBmJRfV8zONvXThnm1tcuojL04Uy5uRyqg93DC83lDebl0rocZCfKSjUv+fWYtMQmEDJldg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@stitches/core/-/core-1.2.8.tgz}
+    name: '@stitches/core'
+    version: 1.2.8
+    dev: false
+
   registry.npmmirror.com/@supabase/auth-js@2.63.0:
     resolution: {integrity: sha512-yIgcHnlgv24GxHtVGUhwGqAFDyJkPIC/xjx7HostN08A8yCy8HIfl4JEkTKyBqD1v1L05jNEJOUke4Lf4O1+Qg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@supabase/auth-js/-/auth-js-2.63.0.tgz}
     name: '@supabase/auth-js'
     version: 2.63.0
     dependencies:
       '@supabase/node-fetch': registry.npmmirror.com/@supabase/node-fetch@2.6.15
+    dev: false
+
+  registry.npmmirror.com/@supabase/auth-ui-react@0.4.7(@supabase/supabase-js@2.42.0):
+    resolution: {integrity: sha512-Lp4FQGFh7BMX1Y/BFaUKidbryL7eskj1fl6Lby7BeHrTctbdvDbCMjVKS8wZ2rxuI8FtPS2iU900fSb70FHknQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@supabase/auth-ui-react/-/auth-ui-react-0.4.7.tgz}
+    id: registry.npmmirror.com/@supabase/auth-ui-react/0.4.7
+    name: '@supabase/auth-ui-react'
+    version: 0.4.7
+    peerDependencies:
+      '@supabase/supabase-js': ^2.21.0
+    dependencies:
+      '@stitches/core': registry.npmmirror.com/@stitches/core@1.2.8
+      '@supabase/auth-ui-shared': registry.npmmirror.com/@supabase/auth-ui-shared@0.1.8(@supabase/supabase-js@2.42.0)
+      '@supabase/supabase-js': registry.npmmirror.com/@supabase/supabase-js@2.42.0
+      prop-types: registry.npmmirror.com/prop-types@15.8.1
+      react: registry.npmmirror.com/react@18.2.0
+      react-dom: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
+    dev: false
+
+  registry.npmmirror.com/@supabase/auth-ui-shared@0.1.8(@supabase/supabase-js@2.42.0):
+    resolution: {integrity: sha512-ouQ0DjKcEFg+0gZigFIEgu01V3e6riGZPzgVD0MJsCBNsMsiDT74+GgCEIElMUpTGkwSja3xLwdFRFgMNFKcjg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@supabase/auth-ui-shared/-/auth-ui-shared-0.1.8.tgz}
+    id: registry.npmmirror.com/@supabase/auth-ui-shared/0.1.8
+    name: '@supabase/auth-ui-shared'
+    version: 0.1.8
+    peerDependencies:
+      '@supabase/supabase-js': ^2.21.0
+    dependencies:
+      '@supabase/supabase-js': registry.npmmirror.com/@supabase/supabase-js@2.42.0
     dev: false
 
   registry.npmmirror.com/@supabase/functions-js@2.2.2:
@@ -3476,6 +3515,16 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
+  registry.npmmirror.com/prop-types@15.8.1:
+    resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/prop-types/-/prop-types-15.8.1.tgz}
+    name: prop-types
+    version: 15.8.1
+    dependencies:
+      loose-envify: registry.npmmirror.com/loose-envify@1.4.0
+      object-assign: registry.npmmirror.com/object-assign@4.1.1
+      react-is: registry.npmmirror.com/react-is@16.13.1
+    dev: false
+
   registry.npmmirror.com/punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/punycode/-/punycode-2.3.1.tgz}
     name: punycode
@@ -3518,6 +3567,12 @@ packages:
       react: ^16.8.0 || ^17 || ^18
     dependencies:
       react: registry.npmmirror.com/react@18.2.0
+    dev: false
+
+  registry.npmmirror.com/react-is@16.13.1:
+    resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-is/-/react-is-16.13.1.tgz}
+    name: react-is
+    version: 16.13.1
     dev: false
 
   registry.npmmirror.com/react-refresh@0.14.0:
