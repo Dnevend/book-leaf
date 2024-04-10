@@ -3,14 +3,14 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { Router } from "./router/index.tsx";
 import "./index.css";
-import { LogtoProviderWrap } from "./provider/index.ts";
+import { SupabaseAuthProvider } from "./provider/supabaseAuth/index.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <LogtoProviderWrap>
-      <BrowserRouter>
+    <BrowserRouter>
+      <SupabaseAuthProvider>
         <Router />
-      </BrowserRouter>
-    </LogtoProviderWrap>
+      </SupabaseAuthProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
