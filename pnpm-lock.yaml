@@ -19,6 +19,9 @@ dependencies:
   '@radix-ui/react-menubar':
     specifier: ^1.0.4
     version: registry.npmmirror.com/@radix-ui/react-menubar@1.0.4(@types/react-dom@18.2.23)(@types/react@18.2.74)(react-dom@18.2.0)(react@18.2.0)
+  '@radix-ui/react-scroll-area':
+    specifier: ^1.0.5
+    version: registry.npmmirror.com/@radix-ui/react-scroll-area@1.0.5(@types/react-dom@18.2.23)(@types/react@18.2.74)(react-dom@18.2.0)(react@18.2.0)
   '@radix-ui/react-separator':
     specifier: ^1.0.3
     version: registry.npmmirror.com/@radix-ui/react-separator@1.0.3(@types/react-dom@18.2.23)(@types/react@18.2.74)(react-dom@18.2.0)(react@18.2.0)
@@ -919,6 +922,14 @@ packages:
     requiresBuild: true
     optional: true
 
+  registry.npmmirror.com/@radix-ui/number@1.0.1:
+    resolution: {integrity: sha512-T5gIdVO2mmPW3NNhjNgEP3cqMXjXL9UbO0BzWcXfvdBs+BohbQxvd/K5hSVKmn9/lbTdsQVKbUcP5WLCwvUbBg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@radix-ui/number/-/number-1.0.1.tgz}
+    name: '@radix-ui/number'
+    version: 1.0.1
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime@7.24.1
+    dev: false
+
   registry.npmmirror.com/@radix-ui/primitive@1.0.1:
     resolution: {integrity: sha512-yQ8oGX2GVsEYMWGxcovu1uGWPCxV5BFfeeYxqPmuAzUyLT9qmaMXSAhXpb0WrspIeqYzdJpkh2vHModJPgRIaw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@radix-ui/primitive/-/primitive-1.0.1.tgz}
     name: '@radix-ui/primitive'
@@ -1415,6 +1426,38 @@ packages:
       '@radix-ui/react-primitive': registry.npmmirror.com/@radix-ui/react-primitive@1.0.3(@types/react-dom@18.2.23)(@types/react@18.2.74)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-use-callback-ref': registry.npmmirror.com/@radix-ui/react-use-callback-ref@1.0.1(@types/react@18.2.74)(react@18.2.0)
       '@radix-ui/react-use-controllable-state': registry.npmmirror.com/@radix-ui/react-use-controllable-state@1.0.1(@types/react@18.2.74)(react@18.2.0)
+      '@types/react': registry.npmmirror.com/@types/react@18.2.74
+      '@types/react-dom': registry.npmmirror.com/@types/react-dom@18.2.23
+      react: registry.npmmirror.com/react@18.2.0
+      react-dom: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
+    dev: false
+
+  registry.npmmirror.com/@radix-ui/react-scroll-area@1.0.5(@types/react-dom@18.2.23)(@types/react@18.2.74)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-b6PAgH4GQf9QEn8zbT2XUHpW5z8BzqEc7Kl11TwDrvuTrxlkcjTD5qa/bxgKr+nmuXKu4L/W5UZ4mlP/VG/5Gw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@radix-ui/react-scroll-area/-/react-scroll-area-1.0.5.tgz}
+    id: registry.npmmirror.com/@radix-ui/react-scroll-area/1.0.5
+    name: '@radix-ui/react-scroll-area'
+    version: 1.0.5
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime@7.24.1
+      '@radix-ui/number': registry.npmmirror.com/@radix-ui/number@1.0.1
+      '@radix-ui/primitive': registry.npmmirror.com/@radix-ui/primitive@1.0.1
+      '@radix-ui/react-compose-refs': registry.npmmirror.com/@radix-ui/react-compose-refs@1.0.1(@types/react@18.2.74)(react@18.2.0)
+      '@radix-ui/react-context': registry.npmmirror.com/@radix-ui/react-context@1.0.1(@types/react@18.2.74)(react@18.2.0)
+      '@radix-ui/react-direction': registry.npmmirror.com/@radix-ui/react-direction@1.0.1(@types/react@18.2.74)(react@18.2.0)
+      '@radix-ui/react-presence': registry.npmmirror.com/@radix-ui/react-presence@1.0.1(@types/react-dom@18.2.23)(@types/react@18.2.74)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-primitive': registry.npmmirror.com/@radix-ui/react-primitive@1.0.3(@types/react-dom@18.2.23)(@types/react@18.2.74)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-use-callback-ref': registry.npmmirror.com/@radix-ui/react-use-callback-ref@1.0.1(@types/react@18.2.74)(react@18.2.0)
+      '@radix-ui/react-use-layout-effect': registry.npmmirror.com/@radix-ui/react-use-layout-effect@1.0.1(@types/react@18.2.74)(react@18.2.0)
       '@types/react': registry.npmmirror.com/@types/react@18.2.74
       '@types/react-dom': registry.npmmirror.com/@types/react-dom@18.2.23
       react: registry.npmmirror.com/react@18.2.0
