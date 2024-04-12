@@ -1,8 +1,9 @@
-import { CircleUser, Leaf } from "lucide-react";
+import { CircleUser } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui";
 import { useSupabaseAuth } from "@/provider/supabaseAuth";
+import { Logo } from "@/components/global";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -26,9 +27,8 @@ const Header = () => {
 
   const Brand = () => (
     <div className="flex items-center justify-between py-5 md:block">
-      <Link to="/" className="flex items-center">
-        <Leaf size={36} color="#96c24e" />
-        {/* <h1 className="text-xl font-bold px-2">書叶 · BookLeaf</h1> */}
+      <Link to="/">
+        <Logo />
       </Link>
       <div className="md:hidden">
         <button
