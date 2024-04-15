@@ -3,7 +3,7 @@ import { Outlet } from "react-router";
 
 export const Layout = () => {
   return (
-    <div className="relative">
+    <div className="relative flex min-h-screen flex-col">
       <Header />
 
       <Outlet />

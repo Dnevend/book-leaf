@@ -22,18 +22,20 @@ function App() {
   const [searchDialogOpen, setSearchDialogOpen] = useState(false);
 
   return (
-    <div className="max-w-screen-xl flex-col space-y-6 p-6 mx-auto">
-      <SearchDialog
-        open={searchDialogOpen}
-        onOpenChange={(open) => setSearchDialogOpen(open)}
-      />
+    <>
+      <div className="flex flex-col space-y-6 container">
+        <SearchDialog
+          open={searchDialogOpen}
+          onOpenChange={(open) => setSearchDialogOpen(open)}
+        />
 
-      <div className="flex w-full min-h-screen max-w-sm space-x-2 mx-auto">
-        <Button onClick={() => setSearchDialogOpen(true)}>Add Book</Button>
+        <div className="flex w-full max-w-sm space-x-2 mx-auto">
+          <Button onClick={() => setSearchDialogOpen(true)}>Add Book</Button>
+        </div>
       </div>
 
-      <div className="sticky bottom-6 mx-auto w-fit shadow-md">
-        <Menubar className="p-2">
+      <div className="absolute bottom-6 w-full">
+        <Menubar className="w-fit p-2 mx-auto shadow-md">
           <MenubarMenu>
             <MenubarTrigger asChild>
               <button className="inline-flex h-6 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 mx-2 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
@@ -125,7 +127,7 @@ function App() {
           </MenubarMenu>
         </Menubar>
       </div>
-    </div>
+    </>
   );
 }
 
