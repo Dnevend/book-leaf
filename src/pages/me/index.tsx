@@ -18,10 +18,16 @@ const Mine = () => {
   return (
     <div className="w-full max-w-screen-xl flex-1 flex-col space-y-6 p-6 mx-auto">
       <div
-        className="w-full h-64 rounded-md overflow-hidden"
-        style={{ backgroundImage: BgLibrary }}
+        className="w-full h-64 rounded-md bg-cover bg-center overflow-hidden"
+        style={{ backgroundImage: `url(${BgLibrary})` }}
       >
-        hello
+        <div className="flex gap-x-2">
+          <img
+            className="w-28 h-28 border-solid border-4 rounded-full overflow-hidden"
+            src="https://http.cat/images/200.jpg"
+          />
+          <div className="text-xl font-bold text-white">{userInfo?.email}</div>
+        </div>
       </div>
 
       <ProfileForm userInfo={userInfo!} />
