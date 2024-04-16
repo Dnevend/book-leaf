@@ -23,7 +23,7 @@ function App() {
 
   return (
     <>
-      <div className="flex flex-col space-y-6 container">
+      <div className="flex min-h-dvh flex-col space-y-6 container">
         <SearchDialog
           open={searchDialogOpen}
           onOpenChange={(open) => setSearchDialogOpen(open)}
@@ -34,7 +34,7 @@ function App() {
         </div>
       </div>
 
-      <div className="absolute bottom-6 w-full">
+      <div className="sticky bottom-6 w-full">
         <Menubar className="w-fit p-2 mx-auto shadow-md">
           <MenubarMenu>
             <MenubarTrigger asChild>
