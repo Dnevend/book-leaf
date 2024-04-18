@@ -6,12 +6,13 @@ import { Button, Input, Textarea } from "@/components/ui";
 import { BookDashed } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Volume } from "@/types/google-books";
+import { toast } from "sonner";
 
 import { storeGet, storeSet } from "@/lib/store2";
 import { supabase } from "@/lib/supabaseClient";
 import { useSupabaseAuth } from "@/provider";
 import { useNavigate } from "react-router";
-import { Database } from "@/types/supabase";
+import { TablesInsert } from "@/types/supabase";
 
 function App() {
   const navigate = useNavigate();
@@ -50,7 +51,10 @@ function App() {
       return;
     }
 
-    if (books.length === 0) return;
+    if (books.length === 0) {
+      toast("Please add book first!");
+      return;
+    }
 
     const { data } = await supabase
       .from("leaf")
@@ -62,11 +66,10 @@ function App() {
       .select()
       .single();
 
-    const columns: Database["public"]["Tables"]["leaf_items"]["Insert"][] =
-      books.map((it) => ({
-        leaf_id: data?.share_id,
-        info: JSON.stringify(it),
-      }));
+    const columns: TablesInsert<"leaf_items">[] = books.map((it) => ({
+      leaf_id: data?.share_id,
+      info: JSON.stringify(it),
+    }));
     await supabase.from("leaf_items").insert(columns);
   };
 
