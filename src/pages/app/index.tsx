@@ -11,7 +11,7 @@ import { storeGet, storeSet } from "@/lib/store2";
 import { supabase } from "@/lib/supabaseClient";
 import { useSupabaseAuth } from "@/provider";
 import { useNavigate } from "react-router";
-import { Database, Tables } from "@/types/supabase";
+import { Database } from "@/types/supabase";
 
 function App() {
   const navigate = useNavigate();
