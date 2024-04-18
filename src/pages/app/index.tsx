@@ -2,14 +2,23 @@ import SearchDialog from "@/components/global/search-dialog";
 import MenuBar from "./components/menubar";
 import BookCard from "./components/book-card";
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui";
+import { Button, Input, Textarea } from "@/components/ui";
 import { BookDashed } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Volume } from "@/types/google-books";
 
 import { storeGet, storeSet } from "@/lib/store2";
+import { supabase } from "@/lib/supabaseClient";
+import { useSupabaseAuth } from "@/provider";
+import { useNavigate } from "react-router";
+import { Database, Tables } from "@/types/supabase";
 
 function App() {
+  const navigate = useNavigate();
+  const { userInfo, isAuth } = useSupabaseAuth();
+
+  const [title, setTitle] = useState<string>();
+  const [desc, setDesc] = useState<string>();
   const [searchDialogOpen, setSearchDialogOpen] = useState(false);
 
   const [books, setBooks] = useState<Volume[]>([]);
@@ -35,6 +44,32 @@ function App() {
     console.log("🐞 => onViewDetail => Volume:", book);
   };
 
+  const onShare = async () => {
+    if (!isAuth) {
+      navigate("/auth");
+      return;
+    }
+
+    if (books.length === 0) return;
+
+    const { data } = await supabase
+      .from("leaf")
+      .insert({
+        user_id: userInfo?.id,
+        name: title,
+        desc: desc,
+      })
+      .select()
+      .single();
+
+    const columns: Database["public"]["Tables"]["leaf_items"]["Insert"][] =
+      books.map((it) => ({
+        leaf_id: data?.share_id,
+        info: JSON.stringify(it),
+      }));
+    await supabase.from("leaf_items").insert(columns);
+  };
+
   return (
     <>
       <div className="flex flex-1 flex-col space-y-6 container">
@@ -45,9 +80,19 @@ function App() {
           onAdd={onAddBook}
         />
 
-        <div>Title...</div>
+        <Input
+          placeholder="Title"
+          className="text-4xl font-bold leading-6 border-none"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
 
-        <div>Description...</div>
+        <Textarea
+          placeholder="Description"
+          className="text-lg leading-4 border-none resize-none"
+          value={desc}
+          onChange={(e) => setDesc(e.target.value)}
+        />
 
         <div
           className={cn(
@@ -88,7 +133,7 @@ function App() {
 
       <div className="sticky bottom-6 w-full">
         <MenuBar
-          onShare={() => null}
+          onShare={onShare}
           onBookAdd={() => setSearchDialogOpen(true)}
           onPicAdd={() => null}
         />
