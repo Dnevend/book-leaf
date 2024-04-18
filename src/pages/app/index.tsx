@@ -1,11 +1,12 @@
 import SearchDialog from "@/components/global/search-dialog";
 import MenuBar from "./components/menubar";
+import BookCard from "./components/book-card";
 import { useEffect, useState } from "react";
-import { Badge, Button } from "@/components/ui";
-import { BookDashed, Trash } from "lucide-react";
+import { Button } from "@/components/ui";
+import { BookDashed } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Volume } from "@/types/google-books";
-import SvgPlaceholder from "@/assets/placeholder.svg";
+
 import { storeGet, storeSet } from "@/lib/store2";
 
 function App() {
@@ -17,6 +18,23 @@ function App() {
     setBooks(storeGet("books", []));
   }, []);
 
+  const onAddBook = (book: Volume) => {
+    if (books.map((it) => it.id).includes(book.id)) return;
+    const _books = [...books, book];
+    storeSet("books", _books);
+    setBooks(_books);
+  };
+
+  const onRemoveBook = (book: Volume) => {
+    const _books = books.filter((it) => it.id !== book.id);
+    storeSet("books", _books);
+    setBooks(_books);
+  };
+
+  const onViewDetail = (book: Volume) => {
+    console.log("🐞 => onViewDetail => Volume:", book);
+  };
+
   return (
     <>
       <div className="flex flex-1 flex-col space-y-6 container">
@@ -24,12 +42,7 @@ function App() {
           open={searchDialogOpen}
           onOpenChange={(open) => setSearchDialogOpen(open)}
           added={books.map((it) => it.id)}
-          onAdd={(book) => {
-            if (books.map((it) => it.id).includes(book.id)) return;
-            const _books = [...books, book];
-            storeSet("books", _books);
-            setBooks(_books);
-          }}
+          onAdd={onAddBook}
         />
 
         <div>Title...</div>
@@ -44,45 +57,12 @@ function App() {
         >
           <div className="grid grid-cols-2 md:grid-cols-5 sm:grid-cols-3 gap-4">
             {books.map((it) => (
-              <div
-                className={cn(
-                  "relative py-2 md:py-10 sm:py-3 px-2 md:px-5 flex flex-col items-center justify-center w-auto h-auto rounded-xl border",
-                  "bg-gray-50 group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1]"
-                )}
-              >
-                <div className="text-xl font-bold text-neutral-600 dark:text-white text-ellipsis overflow-hidden line-clamp-2">
-                  {it.volumeInfo.title}
-                </div>
-                <div className="flex gap-1 mt-1">
-                  {it.volumeInfo.authors?.map((it) => (
-                    <Badge variant="outline">{it}</Badge>
-                  ))}
-                </div>
-                <div className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300 text-ellipsis overflow-hidden line-clamp-2">
-                  {it.volumeInfo.description}
-                </div>
-                <div className="w-full mt-4">
-                  <img
-                    src={
-                      it.volumeInfo.imageLinks?.thumbnail
-                        ? it.volumeInfo.imageLinks.thumbnail
-                        : SvgPlaceholder
-                    }
-                    height="1000"
-                    width="1000"
-                    className="h-28 w-full object-cover rounded-xl group-hover/card:shadow-xl"
-                    alt="thumbnail"
-                  />
-                </div>
-                <div className="flex justify-between items-center mt-6">
-                  <Button size="sm" variant="ghost">
-                    Detail
-                  </Button>
-                  <Button size="sm" variant="ghost">
-                    <Trash size="28" />
-                  </Button>
-                </div>
-              </div>
+              <BookCard
+                key={it.id}
+                book={it}
+                onRemove={onRemoveBook}
+                onViewDetail={onViewDetail}
+              />
             ))}
           </div>
 

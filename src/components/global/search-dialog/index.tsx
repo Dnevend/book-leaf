@@ -3,6 +3,7 @@ import { Logo } from "..";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { useState } from "react";
 import { Volume } from "@/types/google-books";
+import SvgPlaceholder from "@/assets/placeholder.svg";
 
 import {
   Input,
@@ -89,17 +90,17 @@ export const SearchDialog = (
                   {books.map((it) => (
                     <TableRow key={it.id}>
                       <TableCell className="hidden sm:table-cell">
-                        {it.volumeInfo.imageLinks?.smallThumbnail ? (
-                          <img
-                            alt="Product image"
-                            className="aspect-square rounded-md object-cover"
-                            height="64"
-                            src={it.volumeInfo.imageLinks?.smallThumbnail}
-                            width="64"
-                          />
-                        ) : (
-                          it.volumeInfo.title
-                        )}
+                        <img
+                          alt="Product image"
+                          className="aspect-square rounded-md object-cover"
+                          height="64"
+                          src={
+                            it.volumeInfo.imageLinks?.smallThumbnail
+                              ? it.volumeInfo.imageLinks?.smallThumbnail
+                              : SvgPlaceholder
+                          }
+                          width="64"
+                        />
                       </TableCell>
                       <TableCell className="font-medium">
                         {it.volumeInfo.title}
