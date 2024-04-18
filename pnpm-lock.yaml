@@ -52,6 +52,9 @@ dependencies:
   lucide-react:
     specifier: ^0.364.0
     version: registry.npmmirror.com/lucide-react@0.364.0(react@18.2.0)
+  next-themes:
+    specifier: ^0.3.0
+    version: registry.npmmirror.com/next-themes@0.3.0(react-dom@18.2.0)(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: registry.npmmirror.com/react@18.2.0
@@ -67,6 +70,9 @@ dependencies:
   react-router-dom:
     specifier: ^6.22.3
     version: registry.npmmirror.com/react-router-dom@6.22.3(react-dom@18.2.0)(react@18.2.0)
+  sonner:
+    specifier: ^1.4.41
+    version: registry.npmmirror.com/sonner@1.4.41(react-dom@18.2.0)(react@18.2.0)
   store2:
     specifier: ^2.14.3
     version: registry.npmmirror.com/store2@2.14.3
@@ -3410,6 +3416,19 @@ packages:
     version: 1.4.0
     dev: true
 
+  registry.npmmirror.com/next-themes@0.3.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-/QHIrsYpd6Kfk7xakK4svpDI5mmXP0gfvCoJdGpZQ2TOrQZmsW0QxjaiLn8wbIKjtm4BTSqLoix4lxYYOnLJ/w==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/next-themes/-/next-themes-0.3.0.tgz}
+    id: registry.npmmirror.com/next-themes/0.3.0
+    name: next-themes
+    version: 0.3.0
+    peerDependencies:
+      react: ^16.8 || ^17 || ^18
+      react-dom: ^16.8 || ^17 || ^18
+    dependencies:
+      react: registry.npmmirror.com/react@18.2.0
+      react-dom: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
+    dev: false
+
   registry.npmmirror.com/node-releases@2.0.14:
     resolution: {integrity: sha512-y10wOWt8yZpqXmOgRo77WaHEmhYQYGNA6y421PKsKYWEK8aW+cqAphborZDhqfyKrbZEN92CN1X2KbafY2s7Yw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/node-releases/-/node-releases-2.0.14.tgz}
     name: node-releases
@@ -3946,6 +3965,19 @@ packages:
     version: 3.0.0
     engines: {node: '>=8'}
     dev: true
+
+  registry.npmmirror.com/sonner@1.4.41(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-uG511ggnnsw6gcn/X+YKkWPo5ep9il9wYi3QJxHsYe7yTZ4+cOd1wuodOUmOpFuXL+/RE3R04LczdNCDygTDgQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/sonner/-/sonner-1.4.41.tgz}
+    id: registry.npmmirror.com/sonner/1.4.41
+    name: sonner
+    version: 1.4.41
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      react: registry.npmmirror.com/react@18.2.0
+      react-dom: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
+    dev: false
 
   registry.npmmirror.com/source-map-js@1.2.0:
     resolution: {integrity: sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/source-map-js/-/source-map-js-1.2.0.tgz}
