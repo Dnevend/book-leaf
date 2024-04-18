@@ -1,16 +1,21 @@
 import SearchDialog from "@/components/global/search-dialog";
 import MenuBar from "./components/menubar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Badge, Button } from "@/components/ui";
-import { BookDashed } from "lucide-react";
+import { BookDashed, Trash } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Volume } from "@/types/google-books";
 import SvgPlaceholder from "@/assets/placeholder.svg";
+import { storeGet, storeSet } from "@/lib/store2";
 
 function App() {
   const [searchDialogOpen, setSearchDialogOpen] = useState(false);
 
   const [books, setBooks] = useState<Volume[]>([]);
+
+  useEffect(() => {
+    setBooks(storeGet("books", []));
+  }, []);
 
   return (
     <>
@@ -18,8 +23,12 @@ function App() {
         <SearchDialog
           open={searchDialogOpen}
           onOpenChange={(open) => setSearchDialogOpen(open)}
+          added={books.map((it) => it.id)}
           onAdd={(book) => {
-            setBooks((_books) => [..._books, book]);
+            if (books.map((it) => it.id).includes(book.id)) return;
+            const _books = [...books, book];
+            storeSet("books", _books);
+            setBooks(_books);
           }}
         />
 
@@ -65,9 +74,12 @@ function App() {
                     alt="thumbnail"
                   />
                 </div>
-                <div className="flex items-center mt-6">
+                <div className="flex justify-between items-center mt-6">
                   <Button size="sm" variant="ghost">
                     Detail
+                  </Button>
+                  <Button size="sm" variant="ghost">
+                    <Trash size="28" />
                   </Button>
                 </div>
               </div>

@@ -17,7 +17,7 @@ import {
   Badge,
 } from "@/components/ui";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { CirclePlus } from "lucide-react";
+import { CircleCheck, CirclePlus } from "lucide-react";
 import { useThrottleFn } from "@/lib/hooks";
 
 const baseUrl = "https://www.googleapis.com/books";
@@ -27,7 +27,10 @@ const requestUrl = {
 };
 
 export const SearchDialog = (
-  props: DialogPrimitive.DialogProps & { onAdd?: (record: Volume) => void }
+  props: DialogPrimitive.DialogProps & {
+    added: (string | number)[];
+    onAdd: (record: Volume) => void;
+  }
 ) => {
   const [books, setBooks] = useState<Volume[]>([]);
 
@@ -116,7 +119,11 @@ export const SearchDialog = (
                           variant="ghost"
                           onClick={() => props.onAdd?.(it)}
                         >
-                          <CirclePlus className="h-4 w-4" />
+                          {props.added.includes(it.id) ? (
+                            <CircleCheck className="h-4 w-4" />
+                          ) : (
+                            <CirclePlus className="h-4 w-4" />
+                          )}
                           <span className="sr-only">Add</span>
                         </Button>
                       </TableCell>
