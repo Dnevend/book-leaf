@@ -15,14 +15,9 @@ import {
   TableRow,
   TableCell,
   Badge,
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuLabel,
-  DropdownMenuContent,
-  DropdownMenuItem,
 } from "@/components/ui";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { MoreHorizontal } from "lucide-react";
+import { CirclePlus } from "lucide-react";
 import { useThrottleFn } from "@/lib/hooks";
 
 const baseUrl = "https://www.googleapis.com/books";
@@ -31,7 +26,9 @@ const requestUrl = {
   volumes: "/v1/volumes",
 };
 
-export const SearchDialog = (props: DialogPrimitive.DialogProps) => {
+export const SearchDialog = (
+  props: DialogPrimitive.DialogProps & { onAdd?: (record: Volume) => void }
+) => {
   const [books, setBooks] = useState<Volume[]>([]);
 
   const onSearch = async (searchContent: string) => {
@@ -76,12 +73,7 @@ export const SearchDialog = (props: DialogPrimitive.DialogProps) => {
                     </TableHead>
                     <TableHead>Name</TableHead>
                     <TableHead>Authors</TableHead>
-                    <TableHead className="hidden md:table-cell">
-                      Price
-                    </TableHead>
-                    <TableHead className="hidden md:table-cell">
-                      Publisher
-                    </TableHead>
+
                     <TableHead className="hidden md:table-cell">
                       Published Date
                     </TableHead>
@@ -94,13 +86,17 @@ export const SearchDialog = (props: DialogPrimitive.DialogProps) => {
                   {books.map((it) => (
                     <TableRow key={it.id}>
                       <TableCell className="hidden sm:table-cell">
-                        <img
-                          alt="Product image"
-                          className="aspect-square rounded-md object-cover"
-                          height="64"
-                          src={it.volumeInfo.imageLinks?.smallThumbnail}
-                          width="64"
-                        />
+                        {it.volumeInfo.imageLinks?.smallThumbnail ? (
+                          <img
+                            alt="Product image"
+                            className="aspect-square rounded-md object-cover"
+                            height="64"
+                            src={it.volumeInfo.imageLinks?.smallThumbnail}
+                            width="64"
+                          />
+                        ) : (
+                          it.volumeInfo.title
+                        )}
                       </TableCell>
                       <TableCell className="font-medium">
                         {it.volumeInfo.title}
@@ -111,32 +107,18 @@ export const SearchDialog = (props: DialogPrimitive.DialogProps) => {
                         ))}
                       </TableCell>
                       <TableCell className="hidden md:table-cell">
-                        $499.99
-                      </TableCell>
-                      <TableCell className="hidden md:table-cell">
-                        {it.volumeInfo.publisher}
-                      </TableCell>
-                      <TableCell className="hidden md:table-cell">
                         {it.volumeInfo.publishedDate}
                       </TableCell>
                       <TableCell>
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button
-                              aria-haspopup="true"
-                              size="icon"
-                              variant="ghost"
-                            >
-                              <MoreHorizontal className="h-4 w-4" />
-                              <span className="sr-only">Toggle menu</span>
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
-                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                            <DropdownMenuItem>Edit</DropdownMenuItem>
-                            <DropdownMenuItem>Delete</DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
+                        <Button
+                          aria-haspopup="true"
+                          size="icon"
+                          variant="ghost"
+                          onClick={() => props.onAdd?.(it)}
+                        >
+                          <CirclePlus className="h-4 w-4" />
+                          <span className="sr-only">Add</span>
+                        </Button>
                       </TableCell>
                     </TableRow>
                   ))}
