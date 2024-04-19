@@ -1,1 +1,1 @@
-export type StorageKey = 'userInfo' | 'books'
+export type StorageKey = 'userInfo' | 'books' | 'leafs'
