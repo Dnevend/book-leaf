@@ -12,7 +12,7 @@ const Mine = () => {
   const navigate = useNavigate();
 
   const { isAuth, userInfo } = useSupabaseAuth();
-  const [leafs, setLeafs] = useState<Tables<"leaf">[]>(storeGet("leafs"));
+  const [leafs, setLeafs] = useState<Tables<"leaf">[]>(storeGet("leafs", []));
 
   useEffect(() => {
     if (!isAuth) navigate("/auth");
