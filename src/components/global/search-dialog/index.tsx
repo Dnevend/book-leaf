@@ -19,7 +19,7 @@ import {
 } from "@/components/ui";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { CircleCheck, CirclePlus } from "lucide-react";
-import { useThrottleFn } from "@/lib/hooks";
+import { useDebounceFn } from "@/lib/hooks";
 
 const baseUrl = "https://www.googleapis.com/books";
 
@@ -48,7 +48,7 @@ export const SearchDialog = (
     setBooks(items);
   };
 
-  const { run } = useThrottleFn(onSearch);
+  const { run } = useDebounceFn(onSearch);
 
   return (
     <Dialog {...props}>
