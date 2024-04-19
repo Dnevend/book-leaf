@@ -10,14 +10,16 @@ import { Volume } from "@/types/google-books";
 import { storeGet, storeSet } from "@/lib/store2";
 import { supabase } from "@/lib/supabaseClient";
 import { useSupabaseAuth } from "@/provider";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { TablesInsert } from "@/types/supabase";
 
 import { useToast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 
 function App() {
+  const { id } = useParams() as { id: string };
   const navigate = useNavigate();
+
   const { toast } = useToast();
   const { userInfo, isAuth } = useSupabaseAuth();
 
@@ -28,8 +30,28 @@ function App() {
   const [books, setBooks] = useState<Volume[]>([]);
 
   useEffect(() => {
-    setBooks(storeGet("books", []));
-  }, []);
+    if (!id) {
+      setBooks(storeGet("books", []));
+    } else {
+      (async () => {
+        const { data: leaf } = await supabase
+          .from("leaf")
+          .select()
+          .eq("share_id", id)
+          .single();
+        if (!leaf) return;
+
+        const { data: leafItems } = await supabase
+          .from("leaf_items")
+          .select()
+          .eq("leaf_id", leaf.share_id!);
+
+        setTitle(leaf.name!);
+        setDesc(leaf.desc!);
+        setBooks(leafItems?.map((it) => JSON.parse(it.info as string)) || []);
+      })();
+    }
+  }, [id]);
 
   const onAddBook = (book: Volume) => {
     if (books.map((it) => it.id).includes(book.id)) return;
@@ -84,6 +106,8 @@ function App() {
       info: JSON.stringify(it),
     }));
     await supabase.from("leaf_items").insert(columns);
+
+    navigate(`/app/${data?.share_id}`, { replace: true });
 
     toast({
       title: "Link",

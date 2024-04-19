@@ -21,7 +21,7 @@ export const Router = () => {
         <Route path="/callback" element={<Callback />} />
 
         <Route path="/" element={<Layout />}>
-          <Route path="/app" element={<AppMain />} />
+          <Route path="/app/:id" element={<AppMain />} />
           <Route path="/share" element={<AppShare />} />
           <Route path="/me" element={<AppMe />} />
           <Route path="*" element={<NoMatch />} />

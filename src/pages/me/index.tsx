@@ -31,7 +31,7 @@ const Mine = () => {
   }, [userInfo]);
 
   const onView = (id: Tables<"leaf">["share_id"]) => {
-    console.log(id);
+    navigate("/app/" + id);
   };
 
   const onCreate = () => {
