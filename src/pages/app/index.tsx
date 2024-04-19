@@ -17,15 +17,16 @@ import { useToast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 
 function App() {
-  const { id } = useParams() as { id: string };
+  const { id } = useParams() as { id?: string };
   const navigate = useNavigate();
 
   const { toast } = useToast();
   const { userInfo, isAuth } = useSupabaseAuth();
 
+  const [isBelongMe, setIsBelongMe] = useState<boolean>(false);
   const [title, setTitle] = useState<string>();
   const [desc, setDesc] = useState<string>();
-  const [cover, setCover] = useState<string>();
+  const [coverUrl, setCoverUrl] = useState<string>();
   const [searchDialogOpen, setSearchDialogOpen] = useState(false);
 
   const [books, setBooks] = useState<Volume[]>([]);
@@ -47,13 +48,14 @@ function App() {
           .select()
           .eq("leaf_id", leaf.share_id!);
 
+        setIsBelongMe(leaf.user_id === userInfo?.id);
         setTitle(leaf.name || "");
         setDesc(leaf.desc || "");
-        setCover(leaf.cover || "");
+        setCoverUrl(leaf.cover || "");
         setBooks(leafItems?.map((it) => JSON.parse(it.info as string)) || []);
       })();
     }
-  }, [id]);
+  }, [id, userInfo]);
 
   const onAddBook = (book: Volume) => {
     if (books.map((it) => it.id).includes(book.id)) return;
@@ -77,15 +79,21 @@ function App() {
 
     const file = files[0];
 
-    const { data } = await supabase.storage
+    const { data, error } = await supabase.storage
       .from("cover")
       .upload(`Bookleaf-${new Date().valueOf()}-${file.name}`, file);
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if (error && (error as any).statusCode === "403") {
+      navigate("/auth");
+      return;
+    }
 
     const {
       data: { publicUrl },
     } = await supabase.storage.from("cover").getPublicUrl(data!.path);
 
-    setCover(publicUrl);
+    setCoverUrl(publicUrl);
   };
 
   const onShare = async () => {
@@ -115,7 +123,7 @@ function App() {
         user_id: userInfo?.id,
         name: title,
         desc: desc,
-        cover: cover,
+        cover: coverUrl,
       })
       .select()
       .single();
@@ -147,24 +155,28 @@ function App() {
           onAdd={onAddBook}
         />
 
-        <Input
-          placeholder="Title"
-          className="text-4xl font-bold leading-6 border-none"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+        {(!id || isBelongMe) && (
+          <Input
+            placeholder="Title"
+            className="text-4xl font-bold leading-6 border-none"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        )}
 
-        <Textarea
-          placeholder="Description"
-          className="text-lg leading-4 border-none resize-none"
-          value={desc}
-          onChange={(e) => setDesc(e.target.value)}
-        />
+        {(!id || isBelongMe) && (
+          <Textarea
+            placeholder="Description"
+            className="text-lg leading-4 border-none resize-none"
+            value={desc}
+            onChange={(e) => setDesc(e.target.value)}
+          />
+        )}
 
-        {cover && (
+        {coverUrl && (
           <div
             className="h-36 w-full rounded-sm"
-            style={{ backgroundImage: `url(${cover})` }}
+            style={{ backgroundImage: `url(${coverUrl})` }}
           />
         )}
 

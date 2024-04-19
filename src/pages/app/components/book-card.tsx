@@ -16,7 +16,7 @@ const BookCard = ({
   return (
     <div
       className={cn(
-        "relative py-2 md:py-6 sm:py-3 px-2 md:px-5 flex flex-col items-center justify-between w-auto h-auto rounded-xl border",
+        "py-2 md:py-6 sm:py-3 px-2 md:px-5 flex flex-col items-center justify-between w-auto h-auto rounded-xl border",
         "bg-gray-50 group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1]"
       )}
     >
@@ -25,7 +25,9 @@ const BookCard = ({
       </div>
       <div className="w-full flex flex-wrap justify-start gap-1 mt-1">
         {book.volumeInfo.authors?.map((it) => (
-          <Badge variant="outline">{it}</Badge>
+          <Badge key={it} variant="outline">
+            {it}
+          </Badge>
         ))}
       </div>
       <div className="text-neutral-500 text-sm break-all max-w-sm mt-2 dark:text-neutral-300 text-ellipsis overflow-hidden line-clamp-2">

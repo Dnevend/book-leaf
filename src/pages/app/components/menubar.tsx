@@ -41,27 +41,22 @@ const MenuBar = ({
       <Separator orientation="vertical" />
 
       <MenubarMenu>
-        <MenubarTrigger>
-          <button className="shadow-sm" onClick={onBookAdd}>
-            📚
-          </button>
-        </MenubarTrigger>
+        <MenubarTrigger onClick={onBookAdd}>📚</MenubarTrigger>
       </MenubarMenu>
       <MenubarMenu>
         <MenubarTrigger>
           <UploadButton
             onUpload={onCoverUpload}
             accept="image/*"
-            className="p-0 h-fit w-fit shadow-sm bg-transparent hover:bg-transparent"
+            className="p-0 h-fit w-fit bg-transparent hover:bg-transparent"
+            asChild
           >
-            🌁
+            <span>🌁</span>
           </UploadButton>
         </MenubarTrigger>
       </MenubarMenu>
       <MenubarMenu>
-        <MenubarTrigger>
-          <div className="shadow-sm">🖇️</div>
-        </MenubarTrigger>
+        <MenubarTrigger>🖇️</MenubarTrigger>
         <MenubarContent>
           <MenubarItem>
             Undo <MenubarShortcut>⌘Z</MenubarShortcut>
