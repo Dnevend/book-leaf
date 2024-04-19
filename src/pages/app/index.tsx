@@ -1,9 +1,9 @@
 import SearchDialog from "@/components/global/search-dialog";
 import MenuBar from "./components/menubar";
 import BookCard from "./components/book-card";
+import BookEmpty from "./components/book-empty";
 import { useEffect, useState } from "react";
-import { Button, Input, Textarea } from "@/components/ui";
-import { BookDashed } from "lucide-react";
+import { Input, Textarea } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { Volume } from "@/types/google-books";
 
@@ -25,6 +25,7 @@ function App() {
 
   const [title, setTitle] = useState<string>();
   const [desc, setDesc] = useState<string>();
+  const [cover, setCover] = useState<string>();
   const [searchDialogOpen, setSearchDialogOpen] = useState(false);
 
   const [books, setBooks] = useState<Volume[]>([]);
@@ -46,8 +47,9 @@ function App() {
           .select()
           .eq("leaf_id", leaf.share_id!);
 
-        setTitle(leaf.name!);
-        setDesc(leaf.desc!);
+        setTitle(leaf.name || "");
+        setDesc(leaf.desc || "");
+        setCover(leaf.cover || "");
         setBooks(leafItems?.map((it) => JSON.parse(it.info as string)) || []);
       })();
     }
@@ -68,6 +70,22 @@ function App() {
 
   const onViewDetail = (book: Volume) => {
     console.log("🐞 => onViewDetail => Volume:", book);
+  };
+
+  const handleUpload = async (files: FileList | null) => {
+    if (!files) return;
+
+    const file = files[0];
+
+    const { data } = await supabase.storage
+      .from("cover")
+      .upload(`Bookleaf-${new Date().valueOf()}-${file.name}`, file);
+
+    const {
+      data: { publicUrl },
+    } = await supabase.storage.from("cover").getPublicUrl(data!.path);
+
+    setCover(publicUrl);
   };
 
   const onShare = async () => {
@@ -97,6 +115,7 @@ function App() {
         user_id: userInfo?.id,
         name: title,
         desc: desc,
+        cover: cover,
       })
       .select()
       .single();
@@ -140,6 +159,13 @@ function App() {
           onChange={(e) => setDesc(e.target.value)}
         />
 
+        {cover && (
+          <div
+            className="h-36 w-full rounded-sm"
+            style={{ backgroundImage: `url(${cover})` }}
+          />
+        )}
+
         <div
           className={cn(
             "flex w-full space-x-2 mx-auto",
@@ -158,21 +184,7 @@ function App() {
           </div>
 
           {books.length === 0 && (
-            <div className="flex flex-col flex-1 items-center gap-1 text-center">
-              <BookDashed size={48} />
-              <h3 className="text-2xl font-bold tracking-tight">
-                You have no books
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                You can start sharing as soon as you add a book.
-              </p>
-              <Button
-                className="mt-4"
-                onClick={() => setSearchDialogOpen(true)}
-              >
-                Add Book
-              </Button>
-            </div>
+            <BookEmpty onAdd={() => setSearchDialogOpen(true)} />
           )}
         </div>
       </div>
@@ -181,7 +193,7 @@ function App() {
         <MenuBar
           onShare={onShare}
           onBookAdd={() => setSearchDialogOpen(true)}
-          onPicAdd={() => null}
+          onCoverUpload={handleUpload}
         />
       </div>
     </>

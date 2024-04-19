@@ -1,3 +1,4 @@
+import { UploadButton } from "@/components/global";
 import {
   Menubar,
   MenubarCheckboxItem,
@@ -18,11 +19,11 @@ import {
 const MenuBar = ({
   onShare,
   onBookAdd,
-  onPicAdd,
+  onCoverUpload,
 }: {
   onShare: () => void;
   onBookAdd: () => void;
-  onPicAdd: () => void;
+  onCoverUpload: (files: FileList | null) => void;
 }) => {
   return (
     <Menubar className="w-fit p-2 mx-auto shadow-md">
@@ -48,9 +49,13 @@ const MenuBar = ({
       </MenubarMenu>
       <MenubarMenu>
         <MenubarTrigger>
-          <button className="shadow-sm" onClick={onPicAdd}>
+          <UploadButton
+            onUpload={onCoverUpload}
+            accept="image/*"
+            className="p-0 h-fit w-fit shadow-sm bg-transparent hover:bg-transparent"
+          >
             🌁
-          </button>
+          </UploadButton>
         </MenubarTrigger>
       </MenubarMenu>
       <MenubarMenu>

@@ -61,7 +61,7 @@ const Mine = () => {
             onClick={() => onView(it.share_id)}
           >
             <h2 className="text-xl px-2 my-5">
-              {it.name || "BookLeaf - nnamed"}
+              {it.name || "BookLeaf - unnamed"}
             </h2>
             <div>
               <img
