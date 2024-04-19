@@ -7,7 +7,7 @@ import { Input, Textarea } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { Volume } from "@/types/google-books";
 
-import { storeGet, storeSet } from "@/lib/store2";
+import { storeGet, storeRemove, storeSet } from "@/lib/store2";
 import { supabase } from "@/lib/supabaseClient";
 import { useSupabaseAuth } from "@/provider";
 import { useNavigate, useParams } from "react-router";
@@ -125,6 +125,8 @@ function App() {
       info: JSON.stringify(it),
     }));
     await supabase.from("leaf_items").insert(columns);
+
+    storeRemove("books");
 
     navigate(`/app/${data?.share_id}`, { replace: true });
 
