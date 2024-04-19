@@ -6,7 +6,6 @@ import { Button, Input, Textarea } from "@/components/ui";
 import { BookDashed } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Volume } from "@/types/google-books";
-import { toast } from "sonner";
 
 import { storeGet, storeSet } from "@/lib/store2";
 import { supabase } from "@/lib/supabaseClient";
@@ -14,8 +13,12 @@ import { useSupabaseAuth } from "@/provider";
 import { useNavigate } from "react-router";
 import { TablesInsert } from "@/types/supabase";
 
+import { useToast } from "@/components/ui/use-toast";
+import { ToastAction } from "@/components/ui/toast";
+
 function App() {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const { userInfo, isAuth } = useSupabaseAuth();
 
   const [title, setTitle] = useState<string>();
@@ -52,7 +55,17 @@ function App() {
     }
 
     if (books.length === 0) {
-      toast("Please add book first!");
+      toast({
+        description: "Please add book first!",
+        action: (
+          <ToastAction
+            altText="Add Book"
+            onClick={() => setSearchDialogOpen(true)}
+          >
+            Add book
+          </ToastAction>
+        ),
+      });
       return;
     }
 
@@ -71,6 +84,12 @@ function App() {
       info: JSON.stringify(it),
     }));
     await supabase.from("leaf_items").insert(columns);
+
+    toast({
+      title: "Link",
+      description: data?.share_id,
+      action: <ToastAction altText="Copy">Copy</ToastAction>,
+    });
   };
 
   return (
