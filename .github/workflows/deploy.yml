@@ -28,7 +28,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ${{ secrets.WORK_DIR }}
-            mkdir -p test
 
       #- name: connect and pull and deploy
       #  run: sshpass -p ${{ secrets.SSH_PRIVATE_KEY }} ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git checkout ${{ secrets.MAIN_BRANCH }} && git pull && pnpm i && pnpm run build && exit"
