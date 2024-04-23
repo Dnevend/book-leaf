@@ -6,10 +6,12 @@ import { Trash } from "lucide-react";
 
 const BookCard = ({
   book,
+  editable,
   onRemove,
   onViewDetail,
 }: {
   book: Volume;
+  editable: boolean;
   onViewDetail: (book: Volume) => void;
   onRemove: (book: Volume) => void;
 }) => {
@@ -48,11 +50,14 @@ const BookCard = ({
       </div>
       <div className="w-full flex justify-between items-center mt-6">
         <Button size="sm" variant="ghost" onClick={() => onViewDetail(book)}>
-          Detail
+          详情
         </Button>
-        <Button size="sm" variant="ghost" onClick={() => onRemove(book)}>
-          <Trash size="20" />
-        </Button>
+
+        {editable && (
+          <Button size="sm" variant="ghost" onClick={() => onRemove(book)}>
+            <Trash size="16" />
+          </Button>
+        )}
       </div>
     </div>
   );

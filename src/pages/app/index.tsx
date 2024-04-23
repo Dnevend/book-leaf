@@ -191,6 +191,7 @@ function App() {
               <BookCard
                 key={it.id}
                 book={it}
+                editable={!id || isBelongMe}
                 onRemove={onRemoveBook}
                 onViewDetail={onViewDetail}
               />
