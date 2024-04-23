@@ -85,7 +85,7 @@ const Mine = () => {
         {leafs.map((it) => (
           <div
             key={it.id}
-            className="relative flex flex-col justify-between border-2 rounded-md hover:shadow-md"
+            className="relative flex flex-col justify-between border-2 rounded-md hover:shadow-md overflow-hidden"
             onClick={() => onView(it.share_id)}
           >
             <DropdownMenu>

@@ -176,7 +176,11 @@ function App() {
         {coverUrl && (
           <div
             className="h-36 w-full rounded-sm"
-            style={{ backgroundImage: `url(${coverUrl})` }}
+            style={{
+              backgroundImage: `url(${coverUrl})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
           />
         )}
 
@@ -186,17 +190,19 @@ function App() {
             books.length === 0 ? "m-auto" : null
           )}
         >
-          <div className="grid grid-cols-2 md:grid-cols-5 sm:grid-cols-3 gap-4">
-            {books.map((it) => (
-              <BookCard
-                key={it.id}
-                book={it}
-                editable={!id || isBelongMe}
-                onRemove={onRemoveBook}
-                onViewDetail={onViewDetail}
-              />
-            ))}
-          </div>
+          {books.length > 0 && (
+            <div className="grid grid-cols-2 md:grid-cols-5 sm:grid-cols-3 gap-4">
+              {books.map((it) => (
+                <BookCard
+                  key={it.id}
+                  book={it}
+                  editable={!id || isBelongMe}
+                  onRemove={onRemoveBook}
+                  onViewDetail={onViewDetail}
+                />
+              ))}
+            </div>
+          )}
 
           {books.length === 0 && (
             <BookEmpty onAdd={() => setSearchDialogOpen(true)} />
